@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: notification-service
+
+server:
+  port: 8081
+
+logging:
+  level:
+    com.akinluyi.notifications: INFO

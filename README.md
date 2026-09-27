@@ -215,6 +215,4 @@ All tests run on the default profile with **no Kafka required**. CI runs `mvn -B
 
 ---
 
-## License
 
-MIT © 2026 Ifeoluwa Jeffrey Akinluyi

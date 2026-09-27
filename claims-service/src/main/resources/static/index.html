@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClaimFlow | Claims dashboard</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">CLAIMFLOW</p>
+        <h1>Claims dashboard</h1>
+        <p class="subhead">Submit and manage insurance claims in one place.</p>
+      </div>
+      <button class="secondary-button" id="refresh-button" type="button">Refresh claims</button>
+    </header>
+
+    <section class="card form-card" aria-labelledby="new-claim-heading">
+      <div class="section-heading">
+        <p class="eyebrow">NEW REQUEST</p>
+        <h2 id="new-claim-heading">Submit a claim</h2>
+      </div>
+      <form id="claim-form">
+        <label>Policy number<input name="policyNumber" placeholder="POL-44218" required /></label>
+        <label>Claimant name<input name="claimantName" placeholder="Jane Doe" required /></label>
+        <label>Claim type
+          <select name="type" required>
+            <option value="AUTO">Auto</option><option value="HOME">Home</option>
+            <option value="HEALTH">Health</option><option value="LIFE">Life</option><option value="TRAVEL">Travel</option>
+          </select>
+        </label>
+        <label>Amount<input name="amount" type="number" min="0.01" step="0.01" placeholder="1200.00" required /></label>
+        <label class="wide">Description<textarea name="description" rows="3" maxlength="2000" placeholder="Briefly describe what happened (optional)"></textarea></label>
+        <div class="wide form-actions"><button class="primary-button" type="submit">Submit claim</button><p id="form-message" class="message" role="status"></p></div>
+      </form>
+    </section>
+
+    <section class="claims-section" aria-labelledby="claims-heading">
+      <div class="section-heading row-heading">
+        <div><p class="eyebrow">OVERVIEW</p><h2 id="claims-heading">Your claims</h2></div>
+        <label class="filter-label">Filter status
+          <select id="status-filter"><option value="">All statuses</option><option value="SUBMITTED">Submitted</option><option value="APPROVED">Approved</option><option value="REJECTED">Rejected</option></select>
+        </label>
+      </div>
+      <div id="claims-list" class="claims-list" aria-live="polite"></div>
+    </section>
+  </main>
+  <template id="claim-template">
+    <article class="claim-card">
+      <div class="claim-main"><div class="claim-title"><h3></h3><span class="status"></span></div><p class="meta"></p><p class="description"></p></div>
+      <div class="claim-side"><strong class="amount"></strong><p class="created"></p><div class="claim-actions"></div></div>
+    </article>
+  </template>
+  <script src="/app.js"></script>
+</body>
+</html>
